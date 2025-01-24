@@ -77,7 +77,7 @@ async function run() {
      const updatedData = req.body;
      const filter = { _id: new ObjectId(visaId) };
      const options = { upsert: true };
-     
+
      const updatedDoc = {
        $set: {
          countryImage: updatedData.countryImage,
@@ -100,7 +100,6 @@ async function run() {
      res.send(result);
    });
 
-   
    // GET only the latest 6 visas
    app.get("/latest-visas", async (req, res) => {
      const limit = parseInt(req.query.limit) || 6;
