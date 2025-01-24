@@ -75,9 +75,9 @@ async function run() {
    app.put("/visa-update/:id", async (req, res) => {
      const visaId = req.params.id;
      const updatedData = req.body;
-     
      const filter = { _id: new ObjectId(visaId) };
      const options = { upsert: true };
+     
      const updatedDoc = {
        $set: {
          countryImage: updatedData.countryImage,
