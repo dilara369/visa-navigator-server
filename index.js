@@ -44,7 +44,6 @@ async function run() {
      res.send(result);
    });
 
-   
    // PUT method to update for Application by ID
    app.put("/visa-details/:id", async (req, res) => {
      const visaId = req.params.id;
