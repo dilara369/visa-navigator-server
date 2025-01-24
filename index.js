@@ -100,7 +100,6 @@ async function run() {
      res.send(result);
    });
 
-   // GET only the latest 6 visas
    app.get("/latest-visas", async (req, res) => {
      const limit = parseInt(req.query.limit) || 6;
      const visas = await visaCollection
