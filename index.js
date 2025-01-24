@@ -23,7 +23,6 @@ async function run() {
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-
     const visaCollection = client.db("visa-navigator").collection("visa");
     // console.log(visaCollection.collectionName)
    //   get all visas from the database
@@ -32,21 +31,18 @@ async function run() {
      const result = await cursor.toArray();
      res.send(result);
    });
-
    app.post("/add-visa", async (req, res) => {
      const newVisa = req.body;
      console.log("Adding new visa", newVisa);
      const result = await visaCollection.insertOne(newVisa);
      res.send(result);
    });
-
    app.get("/visa-details/:id", async (req, res) => {
      const id = req.params.id;
      const query = { _id: new ObjectId(id) };
      const result = await visaCollection.findOne(query);
      res.send(result);
    });
-
    // PUT method to update for Application by ID
    app.put("/visa-details/:id", async (req, res) => {
      const visaId = req.params.id;
