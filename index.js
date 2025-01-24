@@ -36,12 +36,10 @@ async function run() {
    app.post("/add-visa", async (req, res) => {
      const newVisa = req.body;
      console.log("Adding new visa", newVisa);
-
      const result = await visaCollection.insertOne(newVisa);
      res.send(result);
    });
 
-   
    app.get("/visa-details/:id", async (req, res) => {
      const id = req.params.id;
      const query = { _id: new ObjectId(id) };
