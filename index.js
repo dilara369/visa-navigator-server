@@ -65,20 +65,17 @@ async function run() {
      );
      res.send(result);
    });
-
    app.get("/visa-update/:id", async (req, res) => {
      const id = req.params.id;
      const query = { _id: new ObjectId(id) };
      const result = await visaCollection.findOne(query);
      res.send(result);
    });
-
    // PUT method to update VISA by ID
    app.put("/visa-update/:id", async (req, res) => {
      const visaId = req.params.id;
      const updatedData = req.body;
-     // console.log(updatedData);
-
+     
      const filter = { _id: new ObjectId(visaId) };
      const options = { upsert: true };
      const updatedDoc = {
